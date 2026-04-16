@@ -1,5 +1,7 @@
 # Comp AI MCP Server
 
+> **Note:** This is an unofficial, community-maintained MCP server. It is not affiliated with, endorsed by, or officially supported by [Comp AI](https://trycomp.ai). Use at your own discretion.
+
 An MCP (Model Context Protocol) server for the [Comp AI](https://trycomp.ai) compliance platform. Gives AI assistants like Claude, Cursor, and others direct access to your compliance data — tasks, policies, risks, vendors, frameworks, controls, and more.
 
 ## What is Comp AI?
@@ -46,10 +48,13 @@ An MCP (Model Context Protocol) server for the [Comp AI](https://trycomp.ai) com
 ### Install
 
 ```bash
-git clone https://github.com/yourusername/compai-mcp.git
-cd compai-mcp
-npm install
-npm run build
+npm install -g compai-mcp
+```
+
+Or run directly with `npx`:
+
+```bash
+npx compai-mcp
 ```
 
 ## Configuration
@@ -62,8 +67,8 @@ Add to your `.cursor/mcp.json`:
 {
   "mcpServers": {
     "compai": {
-      "command": "node",
-      "args": ["/path/to/compai-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "compai-mcp"],
       "env": {
         "COMPAI_API_KEY": "your-api-key-here"
       }
@@ -80,8 +85,8 @@ Add to your `claude_desktop_config.json`:
 {
   "mcpServers": {
     "compai": {
-      "command": "node",
-      "args": ["/path/to/compai-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "compai-mcp"],
       "env": {
         "COMPAI_API_KEY": "your-api-key-here"
       }
@@ -113,6 +118,8 @@ Once connected, you can ask your AI assistant things like:
 ## Development
 
 ```bash
+git clone https://github.com/draded/compai-mcp.git
+cd compai-mcp
 npm install
 npm run build    # Compile TypeScript
 npm run dev      # Build and run
